@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>AA172E6D-D1C5-4CAF-9375-ECBC57F03C9D</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Score Keeper</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>B06274EB5666600F64E051E490B192D68A31DB27</key>
 		<string>https://github.com/stankjawl/Score-Keeper.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Score Keeper.xcodeproj</string>
+	<string>Score Keeper.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B06274EB5666600F64E051E490B192D68A31DB27</key>
