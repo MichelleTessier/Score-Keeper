@@ -12,8 +12,8 @@
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSMutableArray *scoreLabels;
-@property (nonatomic, strong) UIStepper *scoreStepper;
-@property (nonatomic, strong) UILabel *scoreLabel;
+
+
 
 @end
 
@@ -54,26 +54,32 @@
     name.delegate = self;
     [view addSubview:name];
     
-    self.scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake((2 * margin) + (2 * width), margin, width, nameHeight)];
-    self.scoreLabel.text = @"Score";
-    self.scoreLabel.textColor = [UIColor redColor];
-    [view addSubview:self.scoreLabel];
+    UILabel *scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake((2 * margin) + (2 * width), margin, width, nameHeight)];
+   scoreLabel.text = @"0";
+scoreLabel.textColor = [UIColor redColor];
+    [view addSubview:scoreLabel];
     
-    [self.scoreLabels addObject:self.scoreLabel];
+    [self.scoreLabels addObject:scoreLabel];
     
-    self.scoreStepper = [[UIStepper alloc] initWithFrame:CGRectMake((1 * margin) + (3 * width), margin + 10, width, nameHeight)];
-    self.scoreStepper.minimumValue = 0;
-    self.scoreStepper.maximumValue = 1000;
-    self.scoreStepper.stepValue = 2;
-    self.scoreStepper.tag = index;
-    [self.scoreStepper addTarget:self action:@selector(stepperValueChanged:) forControlEvents:UIControlEventValueChanged];
-       [view addSubview:self.scoreStepper];
+    UIStepper *scoreStepper = [[UIStepper alloc] initWithFrame:CGRectMake((1 * margin) + (3 * width), margin + 10, width, nameHeight)];
+    scoreStepper.minimumValue = -100;
+    scoreStepper.maximumValue = 1000;
+    scoreStepper.stepValue = 2;
+    scoreStepper.tag = index;
+    [scoreStepper addTarget:self action:@selector(stepperValueChanged:) forControlEvents:UIControlEventValueChanged];
+       [view addSubview:scoreStepper];
     [self.scrollView addSubview:view];
    
 }
 
 - (void) stepperValueChanged: (id) sender {
-    self.scoreStepper.value = self.scoreLabel;
+    UIStepper *stepper = sender;
+    NSInteger index = stepper.tag;
+    double value = stepper.value;
+    UILabel *scoreLabel = self.scoreLabels[index];
+    scoreLabel.text = [NSString stringWithFormat:@"%d", (int)value];
+    
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
